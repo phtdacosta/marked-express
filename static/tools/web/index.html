@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<title>Editor</title>
+<head>
+    <meta charset="utf-8">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <title>Editor 0.0.1</title>
+    <!--[if lt IE 9 ]> 
+        <script type="text/javascript">
+            var elements = ['header', 'nav', 'menu', 'section', 'article', 'aside', 'footer'];
+            for (var i = 0; i < elements.length; i++){
+                document.createElement(elements[i]);
+            }
+        </script>
+    <![endif]-->
+</head>
+
+<body>
+    <form action="/publish" method="POST">
+
+        <div>
+            <label for="label">Label:</label>
+            <input type="text" id="label" name="label">
+        </div>
+
+        <div>
+            <label for="content">Content:</label>
+            <textarea id="content" name="content"></textarea>
+        </div>
+
+        <div class="button">
+          <button type="submit">Publish</button>
+        </div>
+
+    </form>
+
+    <br>
+    <div id="preview" style="white-space: pre-wrap;"></div>
+</body>
+
+<script type="text/javascript">
+    function isInternetExplorer () {
+        var nav = navigator.userAgent.toLowerCase();
+        return (nav.indexOf('msie') != -1) ? parseInt(nav.split('msie')[1]) : false;
+    }
+
+    function livePreview () {
+        document.getElementById("preview").innerHTML = marked(document.getElementById("content").value);
+    }
+
+    if (isInternetExplorer () == 8) {
+        // IE8 code
+        // That line works even for IE6/7
+        //document.getElementsByTagName("input")[0].value 
+    } else {
+        // Other versions IE or not IE
+        document.getElementById("content").addEventListener("keyup", livePreview);
+        document.getElementById("content").addEventListener("keypress", function(event) {
+            if (event.keyCode == 10 || event.keyCode == 13) {
+
+            }
+        })
+    }
+</script>        
+
+</html>
