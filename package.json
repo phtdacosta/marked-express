@@ -1,0 +1,27 @@
+{
+  "name": "marked-express",
+  "version": "0.0.1",
+  "description": "Simple and powerful blog engine focused on Markdown text format",
+  "main": "index.js",
+  "dependencies": {
+    "drapid": "^0.0.1",
+    "express": "^4.16.3",
+    "marked": "^0.4.0"
+  },
+  "engines": {
+    "node": "4.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/phtdacosta/marked-express"
+  },
+  "keywords": [
+    "marked",
+    "express",
+    "markdown",
+    "simple",
+    "blog"
+  ],
+  "author": "Pedro Costa",
+  "license": "MIT"
+}
