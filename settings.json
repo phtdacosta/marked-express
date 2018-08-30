@@ -1,0 +1,10 @@
+{
+    // Local address
+    "host": "localhost",
+    "port": "3300",
+    // External address
+    "url": "http://localhost:3300",
+    // Access information
+    "username": "admin",
+    "password": "12345"
+}
