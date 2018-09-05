@@ -4,7 +4,7 @@
   "description": "Simple and powerful blog engine focused on Markdown text format",
   "main": "index.js",
   "dependencies": {
-    "drapid": "^0.0.1",
+    "drapid": "^0.0.2",
     "express": "^4.16.3",
     "marked": "^0.4.0"
   },
