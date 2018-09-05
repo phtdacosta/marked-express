@@ -1,17 +1,22 @@
 const express = require('express')
 const router = require('./routers/router'),
-    confs = require('./settings.json')
+    { port
+    , host
+    , url } = require('./.config.json')
 
 const app = express()
+
+// Last barricade against wandering errors
+const catcher = (err, req, res, next) => {
+    console.log(err.stack)
+    res.sendStatus(500)
+}
 
 // const dir = path.join(__dirname, 'static')
 // app.use(express.static(dir))
 app.use(router)
-app.use((err, req, res, next) => {
-    console.log(err.stack)
-    res.sendStatus(500)
-})
+app.use(catcher)
 
-server.listen(confs.port, confs.host, () => {
-    console.log(':%d\n%s\n%s/', confs.port, confs.host, confs.url)
+server.listen(port, host, () => {
+    console.log(':%d\n%s\n%s/', port, host, url)
 })

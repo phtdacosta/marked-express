@@ -2,7 +2,7 @@
 const fs = require('fs'),
     path = require('path'),
     { parse } = require('querystring'),
-    settings = require('../settings.json')
+    config = require('../.config.json')
 
 const marked = require('marked'),
     Drapid = require('drapid')
@@ -81,7 +81,7 @@ const parseHyperlink = (label) => {
     return '<a href=\"'
     // + req.protocol 
     // + '://'
-    + settings.url
+    + config.url
     // + req.hostname
     + '/'
     + secureString(label)
@@ -102,8 +102,8 @@ class Article {
 }
 
 const write = (request, response) => {
-    if (request.query.username === settings.username
-        && request.query.password === settings.password)
+    if (request.query.username === config.username
+        && request.query.password === config.password)
         response.sendFile(path.join(process.cwd(), 'static', 'tools', 'web', 'index.html'))
     else
         response.sendStatus(403)
