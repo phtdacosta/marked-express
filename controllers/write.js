@@ -1,3 +1,5 @@
+const path = require('path')
+
 const config = require('../.config.json')
 
 const write = (request, response) => {

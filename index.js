@@ -18,6 +18,6 @@ const catcher = (err, req, res, next) => {
 app.use(router)
 app.use(catcher)
 
-server.listen(port, host, () => {
+app.listen(port, host, () => {
     console.log(':%d\n%s\n%s/', port, host, url)
 })
