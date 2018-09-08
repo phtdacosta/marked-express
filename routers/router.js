@@ -9,8 +9,8 @@ const feed = require('../controllers/feed'),
 const router = express.Router()
 
 router.route('/').get(feed)
-router.route('/:alias').get(retrieve)
 router.route('/write').get(write)
 router.route('/publish').post(publish)
+router.route('/:alias').get(retrieve)
 
 module.exports = router
