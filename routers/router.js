@@ -1,11 +1,16 @@
 const express = require('express')
-const controller = require('../controllers/controller')
+// The functions to be attached to each route are required from their each specific file
+// High modularization improves maintainability
+const feed = require('../controllers/feed'),
+    retrieve = require('../controllers/retrieve'),
+    write = require('../controllers/write'),
+    publish = require('../controllers/publish')
 
 const router = express.Router()
 
-router.route('/write').get(controller.write)
-router.route('/publish').post(controller.publish)
-router.route('/').get(controller.feed)
-router.route('/:alias').get(controller.retrieve)
+router.route('/').get(feed)
+router.route('/:alias').get(retrieve)
+router.route('/write').get(write)
+router.route('/publish').post(publish)
 
 module.exports = router
