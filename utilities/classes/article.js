@@ -1,3 +1,5 @@
+const secureString = require('../functions/helpers').secureString
+
 class Article {
     constructor (timestamp, label, content) {
         (timestamp === undefined || timestamp === null)
