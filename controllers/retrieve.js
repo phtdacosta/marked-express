@@ -1,7 +1,7 @@
 const path = require('path'),
     marked = require('marked')
 
-const database = require('../utilities/functions/database')({'path': path.join(process.cwd(), 'articles.json'), 'key':'label'}),
+const database = require('../utilities/functions/database'),
     renderEngine = require('../utilities/functions/helpers').renderEngine
 
 const retrieve = (request, response) => {

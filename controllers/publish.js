@@ -1,5 +1,7 @@
-const database = require('../utilities/functions/database')({'path': path.join(process.cwd(), 'articles.json'), 'key':'label'}),
-    parser = require('../utilities/functions/helpers').parser
+const path = require('path')
+
+const database = require('../utilities/functions/database'),
+    parser = require('../utilities/functions/helpers').parser,
     Article = require('../utilities/classes/article')
 
 const publish = (request, response) => {

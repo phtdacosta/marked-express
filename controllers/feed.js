@@ -1,6 +1,6 @@
 const path = require('path')
 
-const database = require('../utilities/functions/database')({'path': path.join(process.cwd(), 'articles.json'), 'key':'label'}),
+const database = require('../utilities/functions/database'),
     renderFeed = require('../utilities/functions/helpers').renderFeed
     renderEngine = require('../utilities/functions/helpers').renderEngine
 
