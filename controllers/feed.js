@@ -7,11 +7,11 @@ const database = require('../utilities/functions/database'),
 const feed = (request, response) => {
     renderFeed(
         database.data,
-        path.join(process.cwd(), 'static', 'templates', 'frame.html'))
+        path.join(process.cwd(), 'templates', 'frame.html'))
     .then((feed) => {
         renderEngine(
             {'feed': feed.join('<br>')},
-            path.join(process.cwd(), 'static', 'templates', 'main.html'))
+            path.join(process.cwd(), 'templates', 'main.html'))
         .then((page) => {
             response.writeHeader(200, {'Content-Type': 'text/html'})
             response.write(page)

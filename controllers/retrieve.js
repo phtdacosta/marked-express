@@ -19,7 +19,7 @@ const retrieve = (request, response) => {
                 // After successfully compiling the file content, the formatted data is inserted into a proper template
                 renderEngine(
                     {'time': new Date(article.timestamp * 1000).toUTCString(), 'content': markdown},
-                    path.join(process.cwd(), 'static', 'templates', 'article.html'))
+                    path.join(process.cwd(), 'templates', 'article.html'))
                 .then(page => {
                     response.writeHeader(200, {'Content-Type': 'text/html'})
                     response.write(page)
