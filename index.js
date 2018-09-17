@@ -17,7 +17,7 @@ const catcher = (err, req, res, next) => {
 
 // Exposes the folder publicly to serve purely static files
 const dir = path.join(__dirname, 'static')
-app.use(express.static(dir))
+app.use('/static', express.static(dir))
 
 app.use(router)
 app.use(catcher)
