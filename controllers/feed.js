@@ -8,6 +8,11 @@ const renderPhase = async function () {
     const feed = await renderFeed(
         database.data,
         path.join(process.cwd(), 'templates', 'frame.html'))
+    const head = await renderEngine(
+        {
+            'title': 'marked-express'
+        },
+        path.join(process.cwd(), 'templates', 'head.html'))
     const body = await renderEngine(
         {
             'feed': feed.join('<br>')
@@ -15,7 +20,7 @@ const renderPhase = async function () {
         path.join(process.cwd(), 'templates', 'body.html'))
     const page = await renderEngine(
         {
-            'head': '<head><title>marked-express</title></head>',
+            'head': head,
             'body': body
         },
         path.join(process.cwd(), 'templates', 'base.html'))

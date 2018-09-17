@@ -5,6 +5,11 @@ const database = require('../utilities/functions/database'),
     renderEngine = require('../utilities/functions/helpers').renderEngine
 
 const renderPhase = async function (article, markdown) {
+    const head = await renderEngine(
+        {
+            'title': article.label
+        },
+        path.join(process.cwd(), 'templates', 'head.html'))
     const body = await renderEngine(
         {
             'time': new Date(article.timestamp * 1000).toUTCString(),
@@ -13,7 +18,7 @@ const renderPhase = async function (article, markdown) {
         path.join(process.cwd(), 'templates', 'article.html'))
     const page = await renderEngine(
         {
-            'head': '<head><title>marked-express</title></head>',
+            'head': head,
             'body': body
         },
         path.join(process.cwd(), 'templates', 'base.html'))
