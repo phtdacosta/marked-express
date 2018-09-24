@@ -1,7 +1,23 @@
 {
-    "host": "localhost",
-    "port": "3300",
-    "url": "http://localhost:3300",
+    "hostname": {
+        "ipv4": "127.0.0.1",
+        "ipv6": "::1"
+    },
+    "protocol": {
+        "http": {
+            "port": "3300"
+        },
+        "https": {
+            "port": "443",
+            "key": "./key.pem",
+            "cert": "./cert.pem"
+        }
+    },
+    "preferences": {
+        "netlayer": "ipv4",
+        "applayer": ["http", "https"]
+    },
+    "domain": "127.0.0.1:3300",
     "username": "admin",
     "password": "12345"
 }

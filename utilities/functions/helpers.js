@@ -72,7 +72,6 @@ const parseHyperlink = (label) => {
     return '<a href=\"'
     // + req.protocol 
     // + '://'
-    + config.url
     // + req.hostname
     + '/'
     + secureString(label)

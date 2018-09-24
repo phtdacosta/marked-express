@@ -1,11 +1,15 @@
-const path = require('path')
+const fs = require('fs'),
+    path = require('path'),
+    http = require('http'),
+    https = require('https')    
 
 const express = require('express')
 
 const router = require('./routers/router'),
-    { port
-    , host
-    , url } = require('./.config.json')
+    { hostname
+    , protocol
+    , preferences
+    , domain } = require('./.config.json')
 
 const app = express()
 
@@ -22,6 +26,56 @@ app.use('/static', express.static(dir))
 app.use(router)
 app.use(catcher)
 
-app.listen(port, host, () => {
-    console.log(':%d\n%s\n%s/', port, host, url)
-})
+// Loads the certificates
+const key = fs.readFileSync(protocol.https.key, 'utf8');
+const cert = fs.readFileSync(protocol.https.cert, 'utf8');
+
+const credentials = {
+	key: key,
+	cert: cert
+}
+
+// Starts http and https servers
+const init = () => {
+    const server = new Object()
+    for (const element of preferences.applayer) {
+        switch (element) {
+            case 'http':
+                server['http'] = http.createServer(app)
+                break
+            case 'https':
+                server['https'] = https.createServer(credentials, app)
+                break
+        }
+    }
+    return server
+}
+
+(() => {
+    const server = init()
+    console.log('%s\n%s', domain, hostname[preferences.netlayer])
+    for (property in server) {
+        switch (property) {
+            case 'http':
+                server[property].listen(
+                    protocol.http.port,
+                    hostname[preferences.netlayer],
+                    () => {
+                    console.log(
+                        ':%d',
+                        protocol.http.port)
+                })
+                break
+            case 'https':
+                server[property].listen(
+                    protocol.https.port,
+                    hostname[preferences.netlayer],
+                    () => {
+                    console.log(
+                        ':%d',
+                        protocol.https.port)
+                })
+                break
+        }
+    }
+})();
