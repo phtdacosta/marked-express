@@ -32,6 +32,18 @@ const replaceAll = (str, find, replace) => {
     return str.replace(new RegExp(find, 'g'), replace)
 }
 
+const readFilePromise = (path, type) => {
+    return new Promise((resolve, reject) => {
+      fs.readFile(path, type, (error, data) => {
+            if (error) {
+                reject(error)
+            } else {
+                resolve(data)
+            }
+      })
+    })
+}
+
 const renderEngine = (object, template) => {
     return new Promise((resolve, reject) => {
         fs.readFile(template, 'utf8', (error, data) => {
@@ -83,6 +95,7 @@ const parseHyperlink = (label) => {
 module.exports = {
     parser: parser,
     replaceAll: replaceAll,
+    readFilePromise: readFilePromise,
     renderEngine: renderEngine,
     renderFeed: renderFeed,
     secureString: secureString,
