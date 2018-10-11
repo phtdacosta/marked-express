@@ -10,7 +10,8 @@
         "https": {
             "port": "443",
             "key": "./key.pem",
-            "cert": "./cert.pem"
+            "cert": "./cert.pem",
+            "ca": "./"
         }
     },
     "preferences": {

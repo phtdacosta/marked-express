@@ -29,10 +29,12 @@ app.use(catcher)
 // Loads the certificates
 const key = fs.readFileSync(protocol.https.key, 'utf8');
 const cert = fs.readFileSync(protocol.https.cert, 'utf8');
+const ca = fs.readFileSync(protocol.https.ca, 'utf8');
 
 const credentials = {
 	key: key,
-	cert: cert
+	cert: cert,
+	ca: ca
 }
 
 // Starts http and https servers
